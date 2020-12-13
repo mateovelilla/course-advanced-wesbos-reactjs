@@ -4,9 +4,6 @@ export default function Home() {
   return (
     <div>
       <p>Hey</p>
-      <Link href="/sell">
-        <a>Go to sell</a>
-      </Link>
     </div>
   )
 }
