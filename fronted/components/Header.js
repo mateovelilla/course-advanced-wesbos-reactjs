@@ -6,7 +6,7 @@ const Logo = styled.h1`
     font-size: 4rem;
     margin-left: 2rem;
     position: relative;
-    z-index:2;
+    z-index:2;      
     transform: skew(-7deg);
     a {
         padding: 0.5rem 1rem;
@@ -23,7 +23,7 @@ const Logo = styled.h1`
 
 const StyleHeader = styled.header`
     .bar {
-        border-bottom: 10 px solid ${props => props.theme.black};
+        border-bottom: 10px solid ${props => props.theme.black};
         display: grid;
         grid-template-columns: auto 1fr;
         justify-content: space-between;
