@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Header from '../components/Header';
 import Meta from '../components/Meta';
-
 const theme = {
   red: '#FF0000', 
   black: '#393939',
@@ -11,6 +10,8 @@ const theme = {
   offwhite: '#EDEDED',
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+  progressBarColor: 'peru',
+  progressBarHeight: 30,
 };
 
 const StylePage = styled.div`
@@ -19,7 +20,6 @@ const StylePage = styled.div`
 `;
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
-  background: ${props => props.theme.red};
   margin: 0 auto;
   padding: 2rem;
 `;
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle `
   @font-face {
     font-family: 'radnika_next';
     src: url('/radnikanext-medium-webfont.woff2')
-    format(' woff2');
+    format('woff2');
     font-weight: normal;
     font-style: normal;
   }
@@ -37,7 +37,7 @@ const GlobalStyle = createGlobalStyle `
     font-size: 10px;
   }
 
-  *,*:before, *:after {
+  *, *:before, *:after {
     box-sizing: inherit;
   }
 
@@ -50,9 +50,22 @@ const GlobalStyle = createGlobalStyle `
   }
   a {
     text-decoration: none;
-    color: ${ props => props.theme.black };
+    color: ${theme.black};
 
   }
+  #nprogress {
+    pointer-events: none;
+}
+
+#nprogress .bar {
+    background: ${props => props.theme.progressBarColor};
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: ${theme.progressBarHeight}px;
+}
 `;
 class Page extends Component {
     render() {
@@ -62,9 +75,7 @@ class Page extends Component {
                 <StylePage>
                     <Meta/>
                     <Header/>
-                    <Inner>
-                        { this.props.children}
-                    </Inner>
+                    <Inner>{this.props.children}</Inner>
                 </StylePage>
             </ThemeProvider>
         );

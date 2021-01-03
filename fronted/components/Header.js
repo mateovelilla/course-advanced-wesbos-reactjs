@@ -1,14 +1,9 @@
 import Link from 'next/link';
 import styled from 'styled-components'; 
 import Nav from './Nav';
-import Router from 'next/router';
-import NProgress from 'nprogress';
+import ProgressBar from './ProgressBar' 
+import ProgressbarStyles from './styles/ProgressbarStyles';
 
-Router.events.on('routeChangeStart', ()=> {
-    console.log('Lo activo')
-    console.log(NProgress)
-    NProgress.start()
-});
 const Logo = styled.h1`
     font-size: 4rem;
     margin-left: 2rem;
@@ -48,6 +43,9 @@ const StyleHeader = styled.header`
 `;
 const Header = () => (
     <StyleHeader>
+        <ProgressbarStyles>
+            <ProgressBar></ProgressBar>
+        </ProgressbarStyles>
         <div className="bar">
             <Logo>
                 <Link href="/">
