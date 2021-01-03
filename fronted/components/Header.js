@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components'; 
 import Nav from './Nav';
-import ProgressBar from './ProgressBar' 
-import ProgressbarStyles from './styles/ProgressbarStyles';
+import ProgressBar from './ProgressBar';
 
 const Logo = styled.h1`
     font-size: 4rem;
@@ -43,9 +42,7 @@ const StyleHeader = styled.header`
 `;
 const Header = () => (
     <StyleHeader>
-        <ProgressbarStyles>
-            <ProgressBar></ProgressBar>
-        </ProgressbarStyles>
+        <ProgressBar></ProgressBar>
         <div className="bar">
             <Logo>
                 <Link href="/">

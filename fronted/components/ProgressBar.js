@@ -5,7 +5,6 @@ import Router from 'next/router';
 import PropTypes from 'prop-types';
 
 class ProgressBar extends Component {
-    timer = null;
     componentDidMount() {
         const { options } = this.props;
         if (options) {
@@ -15,25 +14,17 @@ class ProgressBar extends Component {
         Router.events.on('routeChangeStart', () => {
             NProgress.set(0.3);
             NProgress.start(); 
-            console.log('Entro aca')
         });
         Router.events.on('routeChangeComplete', () => {
-            clearTimeout(this.timer);
-            this.timer = setTimeout(() => {
-                console.log('Entro aca')
-              NProgress.done(true);
-            }, 50000);
+            NProgress.done(true);
         });
         Router.events.on('routeChangeError', () => {
-            clearTimeout(this.timer);
-            this.timer = setTimeout(() => {
-              NProgress.done(true);
-            }, 5000);
+            NProgress.done(true);
         });
     }
 
     render () {
-        return (<div></div>)
+        return (<template/>)
     }
 
 } 
