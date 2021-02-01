@@ -3,7 +3,8 @@ import { Mutation } from "@apollo/client/react/components";
 import gql from "graphql-tag";
 import Form from "./styles/Form";
 import formatMoney from "../lib/formatMoney";
-
+import Error from './ErrorMessage';
+import Router from 'next/router';
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
     $title: String!
@@ -26,11 +27,11 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: "",
-    description: "",
-    image: "",
-    largeImage: "",
-    price: 0,
+    title: "uoiuouo",
+    description: "ñkñlkñkñkñ",
+    image: "dogui.jpg",
+    largeImage: "dogui.jpg",
+    price: 123,
   };
 
   handleChange = (e) => {
@@ -43,10 +44,18 @@ class CreateItem extends Component {
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error, called, data }) => (
           <Form
-            onSubmit={(e) => {
+            onSubmit={async e => {
               e.preventDefault();
+              const res = await createItem();
+              Router.push({
+                pathname: '/item',
+                query: {
+                  id: res.data.createItem.id
+                }
+              })
             }}>
-            <fieldset>
+              <Error error={error}/>
+            <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="title">
                 Title
                 <input
@@ -93,3 +102,4 @@ class CreateItem extends Component {
 }
 
 export default CreateItem;
+export { CREATE_ITEM_MUTATION };
