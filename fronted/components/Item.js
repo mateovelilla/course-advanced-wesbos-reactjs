@@ -5,7 +5,9 @@ import ItemStyles from './styles/ItemStyles';
 import Link from 'next/link';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
-class item extends Component {
+import DeleteItem from './DeleteItem';
+
+class Item extends Component {
     render() {
         const { item } = this.props;
         return (
@@ -29,15 +31,15 @@ class item extends Component {
                         <a>Edit ✏️</a>
                     </Link>
                     <button> Add To Card</button>
-                    <button> Delete</button>
+                    <DeleteItem id={item.id}> Delete this item</DeleteItem>
                 </div>
             </ItemStyles>
         );
     }
 }
 
-item.propTypes = {
+Item.propTypes = {
     item: PropTypes.object.isRequired
 };
 
-export default item;
+export default Item;

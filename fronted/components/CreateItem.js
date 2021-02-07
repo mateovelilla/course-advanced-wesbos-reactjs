@@ -44,7 +44,7 @@ class CreateItem extends Component {
     const files = e.target.files;
     const data = new FormData();
     data.append('file', files[0]);
-    data.append('upload_preset', 'iktxxrdd');
+    data.append('upload_preset', 'wchggucv');
 
     const res = await fetch('https://api.cloudinary.com/v1_1/dcuakctdh/image/upload', {
       method: 'POST',
@@ -54,7 +54,7 @@ class CreateItem extends Component {
     const file = await res.json();
     this.setState({
       image: file.secure_url,
-      largeImage: file.eager[0].secure_url
+      largeImage: file.secure_url
     })
   }
 
@@ -67,7 +67,7 @@ class CreateItem extends Component {
               e.preventDefault();
               const res = await createItem();
               Router.push({
-                pathname: '/item',
+                pathname: '/Item',
                 query: {
                   id: res.data.createItem.id
                 }
