@@ -6,9 +6,9 @@ const Sell = ({id}) => (
 )
 export default Sell;
 export async function getServerSideProps({ query }) {
-    return {
-      props: {
-        ...query
-      },
-    }
+  return {
+    props: {
+      ...query
+    },
   }
+}
