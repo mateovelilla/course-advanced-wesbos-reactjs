@@ -27,11 +27,11 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: "uoiuouo",
-    description: "ñkñlkñkñkñ",
-    image: "dogui.jpg",
-    largeImage: "dogui.jpg",
-    price: 123,
+    title: "",
+    description: "",
+    image: "",
+    largeImage: "",
+    price: 0,
   };
 
   handleChange = (e) => {
@@ -67,7 +67,7 @@ class CreateItem extends Component {
               e.preventDefault();
               const res = await createItem();
               Router.push({
-                pathname: '/Item',
+                pathname: '/item',
                 query: {
                   id: res.data.createItem.id
                 }

@@ -4,7 +4,6 @@ const Sell = ({id}) => (
     <UpdateItem id={id}/>
   </div>
 )
-export default Sell;
 export async function getServerSideProps({ query }) {
   return {
     props: {
@@ -12,3 +11,5 @@ export async function getServerSideProps({ query }) {
     },
   }
 }
+
+export default Sell;
